@@ -15,29 +15,6 @@ public class ChatMessage {
 
     }
 
-    public ChatMessage(String[] data) {
-        this.scoutID = data[0];
-        this.teamNumber = data[1];
-        this.matchNumber = data[2];
-        this.autoHigh = data[3];
-        this.autoLow = data[4];
-        this.autoGear = data[5];
-
-        this.teleHigh = data[6];
-        this.teleLow = data[7];
-        this.teleGear = data[8];
-
-        this.baseLineCross = data[9];
-        this.canPickGearOffGround = data[10];
-        this.playsDefense = data[11];
-        this.highShotDefended = data[12];
-        this.touchPad = data[13];
-        this.climbRopeTime = data[14];
-
-        this.scoutName = data[15];
-        this.notes = data[16];
-    }
-
     public ChatMessage(int[] data, String[] names)
     {
         this.scoutIDint = data[0];
@@ -45,19 +22,20 @@ public class ChatMessage {
         this.matchNumberint = data[2];
 
         this.autoHighint = data[3];
-        this.autoLowint = data[4];
-        this.autoGearint = data[5];
+        this.autoLowint = data[8];
+        this.autoGearint = data[9];
 
-        this.teleHighint = data[6];
-        this.teleLowint = data[7];
-        this.teleGearint = data[8];
+        this.teleHighint = data[4];
+        this.teleLowint = data[5];
 
-        this.baseLineCrossint = data[9];
-        this.canPickGearOffGroundint = data[10];
-        this.playsDefenseint = data[11];
-        this.highShotDefendedint = data[12];
-        this.touchPadint = data[13];
-        this.climbRopeTimeint = data[14];
+        this.teleGearint = data[6];
+
+        this.baseLineCrossint = data[10];
+        this.canPickGearOffGroundint = data[11];
+        this.playsDefenseint = data[12];
+        this.highShotDefendedint = data[13];
+        this.touchPadint = data[14];
+        this.climbRopeTimeint = data[7];
 
         this.scoutName = names[0];
         this.notes = names[1];

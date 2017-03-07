@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String teamText = "";
 
-    private static int MATCH_NUMBER=0, TEAM_NUMBER, SCOUT_ID; //current match and team num
+    private static int MATCH_NUMBER=0, TEAM_NUMBER = 0, SCOUT_ID = 0; //current match and team num
 
 
 
@@ -460,11 +460,9 @@ public class MainActivity extends AppCompatActivity {
         autohigh = inputText1.getText().toString();
 
 
-
         EditText inputText2 = (EditText) findViewById(R.id.editText3);
 
         scoutName = inputText2.getText().toString();
-
 
 
         EditText inputText3 = (EditText) findViewById(R.id.editText2);
@@ -472,17 +470,14 @@ public class MainActivity extends AppCompatActivity {
         notes = inputText3.getText().toString();
 
 
-
         EditText inputText4 = (EditText) findViewById(R.id.highteledata);
 
         highgoals = inputText4.getText().toString();
 
 
-
-        Switch baselineswitch  = (Switch) findViewById(R.id.baseline);
+        Switch baselineswitch = (Switch) findViewById(R.id.baseline);
 
         CrossBaseLine = baselineswitch.isChecked();
-
 
 
         Switch placegearSwitch = (Switch) findViewById(R.id.placegearautodata);
@@ -490,11 +485,9 @@ public class MainActivity extends AppCompatActivity {
         PlaceGear = placegearSwitch.isChecked();
 
 
-
         Switch lowgoalAutoSwitch = (Switch) findViewById(R.id.lowgoaldataauto);
 
         AutoLow = lowgoalAutoSwitch.isChecked();
-
 
 
         Switch touchpadSwitch = (Switch) findViewById(R.id.touchpad);
@@ -502,17 +495,14 @@ public class MainActivity extends AppCompatActivity {
         touchpad = touchpadSwitch.isChecked();
 
 
-
         Switch gearoffgroundSwitch = (Switch) findViewById(R.id.gearoffground);
 
         gearoffground = gearoffgroundSwitch.isChecked();
 
 
-
         Switch OnDefenseSwitch = (Switch) findViewById(R.id.ondefence);
 
         defense = OnDefenseSwitch.isChecked();
-
 
 
         Switch GetsDefendedSwitch = (Switch) findViewById(R.id.highgoaldefence);
@@ -523,153 +513,74 @@ public class MainActivity extends AppCompatActivity {
 
     /*
 
-    SCOUT ID int
+0    SCOUT ID int
 
-    TEAM NUM int
+1    TEAM NUM int
 
-    MATCH NUM int
-
-
-
-    Auto High int
+2    MATCH NUM int
 
 
 
-    Tele High int
-
-    Tele Low int
-
-    Tele Gears int
-
-    Climb Rope Time int
+3    Auto High int
 
 
 
-    Auto Low BOOL
+4    Tele High int
 
-    Auto Gears BOOL
+5    Tele Low int
 
-    Crosses base line BOOL
+  6  Tele Gears int
 
-    Picks gear off ground BOOL
+7    Climb Rope Time int
 
-    On defence BOOL
 
-    Defended shooting high  BOOL
 
-    Touchpad BOOL
+8    Auto Low BOOL
 
-    Scout Name StrING
+9    Auto Gears BOOL
 
-    Notes STRING
+ A   Crosses base line BOOL
+
+  B  Picks gear off ground BOOL
+
+   12 On defence BOOL
+
+    D Defended shooting high  BOOL
+
+  E  Touchpad BOOL
+
+  F  Scout Name StrING
+
+  10  Notes STRING
 
      */
-
-        if(gearsDeliveredTele<0)
+        if (Integer.parseInt(highgoals) < 0) {
+            highgoals = "0";
+        }
+        if (gearsDeliveredTele < 0) {
 
             gearsDeliveredTele = 0;
-
-        if(Integer.parseInt(highgoals)<0)
-
-            highgoals = "0";
-
-        if(touchpad)
-
-        {
-
-            QRStr = "Scout ID: " + (scoutid+1) + "\t"
-
-                    +"Team: " + TEAM_NUMBER + "\t"
-
-                    +"Match: " + (MATCH_NUMBER +1)+ "\t"
-
-
-
-                    +"Auto High: " + autohigh + "\t"
-
-
-
-                    +"Tele High: " + highgoals + "\t"
-
-                    +"Tele Low: " + lowgoalLoadsTele+ "\t"
-
-                    +"Tele Gear: " + gearsDeliveredTele +"\t"
-
-                    +"Climb rope time: " + (progressSeek+min) + "\t"
-
-
-
-                    +"Auto Low: " + AutoLow + "\t"
-
-                    +"Auto Gear: " + PlaceGear + "\t"
-
-                    +"Crosses base line: "+ CrossBaseLine+ "\t"
-
-                    +"Can pick gears off ground: " + gearoffground + "\t"
-
-                    +"On defence: " + defense + "\t"
-
-                    +"Defended shooting high: " + getsdefended + "\t"
-
-                    +"Touchpad: " + touchpad + "\t"
-
-
-
-                    +"Scout Name: " + scoutName + "\t"
-
-                    +"Notes: " + notes + "\t";
-
-            System.out.println("QR STRING: \n"+QRStr);
-
         }
-
-        else {
 
             QRStr = "Scout ID: " + (SCOUT_ID + 1) + "\t"
-
                     +"Team: " + TEAM_NUMBER + "\t"
-
                     +"Match: " + (MATCH_NUMBER+1) + "\t"
-
-
-
                     +"Auto High: " + autohigh + "\t"
-
-
-
                     +"Tele High: " + highgoals + "\t"
-
                     +"Tele Low: " + lowgoalLoadsTele+ "\t"
-
                     +"Tele Gear: " + gearsDeliveredTele +"\t"
-
-                    +"Climb rope time: 0" + "\t"
-
-
-
+                    +"Climb rope time: " + ((touchpad) ? (progressSeek+min) : ("0")) + "\t"
                     +"Auto Low: " + AutoLow + "\t"
-
                     +"Auto Gear: " + PlaceGear + "\t"
-
                     +"Crosses base line: "+ CrossBaseLine+ "\t"
-
                     +"Can pick gears off ground: " + gearoffground + "\t"
-
                     +"On defence: " + defense + "\t"
-
                     +"Defended shooting high: " + getsdefended + "\t"
-
                     +"Touchpad: " + touchpad + "\t"
-
-
-
-
-
                     +"Scout Name: " + scoutName + "\t"
-
                     +"Notes: " + notes + "\t";
 
-        }
+
 
     }
 
@@ -794,7 +705,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-
+/*
             findViewById(R.id.sendbutton).setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -810,6 +721,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             });
+            */
 
         }}
 

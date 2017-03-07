@@ -98,7 +98,7 @@ public class ReaderActivity extends AppCompatActivity {
         //first, opens a dialog box to check if they are sure with clearing the match, then clears current stored data and resets checkboxes
         final AlertDialog.Builder builderReset = new AlertDialog.Builder(this);
         builderReset.setTitle("RESET MATCH?");
-        builderReset.setMessage("Are you sure you want to clear the data and restart this match?");
+        builderReset.setMessage("Are you sure you want to clear the data and store this match?");
         findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -107,6 +107,7 @@ public class ReaderActivity extends AppCompatActivity {
                 builderReset.setPositiveButton("YES", new DialogInterface.OnClickListener() { //sets what the yes option will do
 
                     public void onClick(DialogInterface dialog, int which) {
+                        storeLocal();
                         resetMatch(); //calls method to restart match
                         dialog.dismiss(); //closes dialog box
                     }
@@ -165,7 +166,7 @@ public class ReaderActivity extends AppCompatActivity {
                 */
 
 
-        final AlertDialog.Builder storebuilder = new AlertDialog.Builder(this);
+    /*    final AlertDialog.Builder storebuilder = new AlertDialog.Builder(this);
         storebuilder.setTitle("Save All Data?");
         storebuilder.setMessage("Make Sure You Have Scanned ALL Scouts.");
         findViewById(R.id.storeButton).setOnClickListener(new View.OnClickListener() {
@@ -203,6 +204,7 @@ public class ReaderActivity extends AppCompatActivity {
 
 
         //initializes scan button and sets scan button to open camera and scan when pressed
+        */
         scan_btn = (Button) findViewById(R.id.scan_btn);
         final Activity activity = this;
         scan_btn.setOnClickListener(new View.OnClickListener() {
@@ -260,9 +262,34 @@ public class ReaderActivity extends AppCompatActivity {
         }
     }
 
+    /*
+SCOUT ID int
+TEAM NUM int
+MATCH NUM int
+
+Auto High int
+
+Tele High int
+Tele Low int
+Tele Gears int
+Climb Rope Time int
+
+Auto Low BOOL
+Auto Gears BOOL
+Crosses base line BOOL
+Picks gear off ground BOOL
+On defence BOOL
+Defended shooting high  BOOL
+Touchpad BOOL
+
+Scout Name StrING
+Notes STRING
+*/
     public void storeLocal()
     {
-        JSONArray O = new JSONArray();
+        try
+        {
+        PrintWriter fw = new PrintWriter(new FileWriter(new File("/storage/emulated/0/SampleJSON.json"), true));
         for(int j=0; j<6; j++)  {
             try {
                 JSONObject o = new JSONObject();
@@ -283,8 +310,9 @@ public class ReaderActivity extends AppCompatActivity {
                 o.put("Touchpad", scoutingData[j].getTouchPad());
                 o.put("Scout name", scoutingData[j].getScoutName());
                 o.put("Notes", scoutingData[j].getNotes());
-                O.put(o);
-
+                String outputString = o.toString();
+                System.out.println("outputString == \"" + outputString + "\"");
+                fw.println(outputString);
             }
             catch(Exception e) {
                 System.out.println("oh noes!");
@@ -293,12 +321,8 @@ public class ReaderActivity extends AppCompatActivity {
         }
 
 
-        try {
-            String outputString = O.toString();
 
-            System.out.println("outputString == \"" + outputString + "\"");
-            PrintWriter fw = new PrintWriter(new File("/storage/emulated/0/SampleJSON.json"));
-            fw.println(outputString);
+
             fw.close();
 
         }

@@ -377,27 +377,9 @@
 
         android:layout_alignStart="@+id/red2view" />
 
-    <ImageButton
-
-        android:scaleX="3.00"
-
-        android:scaleY="3.00"
-
-        app:srcCompat="@android:drawable/stat_sys_download"
-
-        android:id="@+id/storeButton"
-
-        android:layout_height="40dp"
-
-        android:layout_width="40dp"
-        android:layout_above="@+id/red2view"
-        android:layout_alignLeft="@+id/checkRed2"
-        android:layout_alignStart="@+id/checkRed2"
-        android:layout_marginBottom="69dp" />
-
     <Button
 
-        android:text="RESET"
+        android:text="Done"
 
         android:layout_width="wrap_content"
 
@@ -410,17 +392,6 @@
         android:layout_alignLeft="@+id/red2view"
         android:layout_alignStart="@+id/red2view"
         android:layout_marginBottom="18dp" />
-
-    <TextView
-        android:text="Download Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textSize="18sp"
-        android:layout_marginBottom="39dp"
-        android:layout_above="@+id/storeButton"
-        android:layout_alignLeft="@+id/scan_btn"
-        android:layout_alignStart="@+id/scan_btn" />
 
 
 </RelativeLayout>
